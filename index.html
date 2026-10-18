@@ -138,7 +138,7 @@ Order on WhatsApp
 
 <div id="sizes" role="group" aria-label="Size" style="display: none; background: #E8E4DA; border-radius: 999px; padding: 4px; gap: 4px; margin-bottom: 22px"></div>
 
-<div id="items" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); gap: 16px"></div>
+<div id="items" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); gap: 16px; align-items: start"></div>
 </section>
 
 <!-- COMBOS BAND -->
@@ -257,14 +257,14 @@ var menu = {
       juices: { label: 'Cane Juices', note: 'No water. No sugar. No ice. Just cane, pressed fresh — on its own or blended with real fruit.', sizes: ['Medium 300ml', 'Large 500ml'], items: [
         { n: 'Pure Cane · Lemon & Ginger', d: 'Fresh-pressed cane with lemon and ginger.', p: [45, 65], m: true },
         { n: 'Pure Cane · Mint', d: 'Fresh-pressed cane with mint.', p: [45, 65] },
-        { n: 'Apple Cane', d: 'Real apple blended with pure cane.', p: [95, 149], m: true },
-        { n: 'Pomegranate Cane', d: 'Real pomegranate blended with pure cane.', p: [95, 149] },
-        { n: 'Grape Cane', d: 'Real grapes blended with pure cane.', p: [75, 129], m: true },
-        { n: 'Pineapple Cane', d: 'Real pineapple blended with pure cane.', p: [75, 129] },
-        { n: 'Coconut Cane', d: 'Tender coconut blended with pure cane.', p: [65, 109], m: true },
-        { n: 'Watermelon Cane', d: 'Real watermelon blended with pure cane.', p: [65, 99], m: true },
-        { n: 'Muskmelon Cane', d: 'Real muskmelon blended with pure cane.', p: [65, 99] },
-        { n: 'Guava Cane', d: 'Real guava blended with pure cane.', p: [65, 99] },
+        { n: 'Apple Cane', img: 'juice-apple.jpg', d: 'Real apple blended with pure cane.', p: [95, 149], m: true },
+        { n: 'Pomegranate Cane', img: 'juice-pomegranate.jpg', d: 'Real pomegranate blended with pure cane.', p: [95, 149] },
+        { n: 'Grape Cane', img: 'juice-grape.jpg', d: 'Real grapes blended with pure cane.', p: [75, 129], m: true },
+        { n: 'Pineapple Cane', img: 'juice-pineapple.jpg', d: 'Real pineapple blended with pure cane.', p: [75, 129] },
+        { n: 'Coconut Cane', img: 'juice-coconut.jpg', d: 'Tender coconut blended with pure cane.', p: [65, 109], m: true },
+        { n: 'Watermelon Cane', img: 'juice-watermelon.jpg', d: 'Real watermelon blended with pure cane.', p: [65, 99], m: true },
+        { n: 'Muskmelon Cane', img: 'juice-muskmelon.jpg', d: 'Real muskmelon blended with pure cane.', p: [65, 99] },
+        { n: 'Guava Cane', img: 'juice-guava.jpg', d: 'Real guava blended with pure cane.', p: [65, 99] },
         { n: 'ABC Cold-Pressed (300ml)', d: 'Apple, beetroot & carrot, hydraulic cold-pressed with zero heat.', p: [135, 135], m: true }
       ]},
       sandwiches: { label: 'Grilled Sandwiches', note: 'Hot off the grill, made fresh to order — perfect with a cane juice.', items: [
@@ -297,6 +297,7 @@ function renderMenu(){
   cur.items.forEach(function(it){var p=it.p[Math.min(si,it.p.length-1)];var price=p==null?'':(it.from?'from \u20b9':'\u20b9')+p;
     var sz=hasSize?' ('+cur.sizes[si]+')':'';var wa=WA+encodeURIComponent('Hi The Cane Shop, I\u2019d like to order: '+it.n+sz);
     html+='<article class="card" style="background:#FFFFFF;border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:10px;border:1px solid #E4E0D6">'+
+    (it.img?'<img src="'+it.img+'" alt="'+esc(it.n)+' juice" loading="lazy" style="width:calc(100% + 44px);max-width:none;margin:-22px -22px 4px;aspect-ratio:26/22;object-fit:cover;border-radius:22px 22px 0 0;display:block;background:#F5EFE4">':'')+
     '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px"><h3 style="margin:0;font-size:18px;font-weight:700;line-height:1.3">'+esc(it.n)+'</h3><span style="font-size:18px;font-weight:800;color:'+accent+';white-space:nowrap">'+price+'</span></div>'+
     (it.m?'<span style="align-self:flex-start;background:#FDF0D5;color:#7A4B00;font-size:12px;font-weight:700;letter-spacing:1px;padding:4px 10px;border-radius:999px">MUST TRY</span>':'')+
     '<p style="margin:0;font-size:14px;line-height:1.55;color:#4A5A50;flex-grow:1">'+esc(it.d)+'</p>'+
