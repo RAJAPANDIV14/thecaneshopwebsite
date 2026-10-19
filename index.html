@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Cane Shop — Bodi's 1st Korean &amp; Gelato Café | Bodinayakanur</title>
+<title>The Cane Shop — Bodi’s 1st Korean & Gelato Café | Bodinayakanur</title>
 <meta name="description" content="Bodi's 1st Korean & Gelato Café on Bodi Thevaram Road, Bodinayakanur. Gochujang momos, Korean cream cheese buns, grilled sandwiches, in-house Sarang Gelato and pure sugarcane juice. Fully AC, open 9 AM–10 PM daily.">
 <meta property="og:title" content="The Cane Shop — Bodi's 1st Korean & Gelato Café">
 <meta property="og:description" content="Korean bites. Real gelato. Pure cane juice. Bodinayakanur, open 9 AM–10 PM daily.">
@@ -35,6 +35,14 @@ a{color:#007042}a:hover{color:#00522F}
 </style>
 
 <style>html{scroll-behavior:smooth}section[id]{scroll-margin-top:90px}*{box-sizing:border-box}img{max-width:100%}#modal:not([hidden]){display:flex}</style>
+<style>
+.navlinks a{position:relative;padding:8px 0;font-weight:600;letter-spacing:.3px}
+.navlinks a[aria-current="page"]{color:#007042}
+.navlinks a[aria-current="page"]::after{content:"";position:absolute;left:0;right:0;bottom:-15px;height:4px;background:#007042;border-radius:2px}
+.rtrack::-webkit-scrollbar{display:none}
+.rcard:hover{transform:translateY(-3px);box-shadow:0 4px 10px rgba(0,0,0,.1),0 14px 30px rgba(0,0,0,.1)!important}.rcard{transition:transform .2s,box-shadow .2s}
+@media (max-width:760px){.navlinks{display:flex!important;order:3;width:100%;justify-content:space-around;gap:8px!important;border-top:1px solid #EEE9DF;padding-top:6px}.navlinks a[aria-current="page"]::after{bottom:-6px}.ph-h{font-size:34px!important}.tiles4{grid-template-columns:1fr 1fr!important}.rcard{flex-basis:160px!important}}
+</style>
 </head>
 <body>
 
@@ -43,7 +51,7 @@ a{color:#007042}a:hover{color:#00522F}
 <!-- NAV -->
 <header style="position: sticky; top: 0; z-index: 10; background: #FFFFFF; border-bottom: 1px solid #E4E0D6">
 <nav aria-label="Main" style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap">
-<a href="#top" style="display: flex; align-items: center; gap: 12px; text-decoration: none">
+<a href="/" style="display: flex; align-items: center; gap: 12px; text-decoration: none">
 <img src="logo.png" alt="The Cane Shop" style="width: 60px; height: 60px; display: block">
 <span class="navlogo-sub" style="display: flex; flex-direction: column; line-height: 1.2">
 <span style="font-weight: 700; font-size: 14px; color: #007042">Korean &amp; Gelato Café</span>
@@ -51,10 +59,9 @@ a{color:#007042}a:hover{color:#00522F}
 </span>
 </a>
 <div class="navlinks" style="display: flex; gap: 28px; align-items: center">
-<a href="#menu">Menu</a>
-<a href="#story">Our Story</a>
-<a href="#reviews">Reviews</a>
-<a href="#visit">Visit</a>
+<a href="/menu">Menu</a>
+<a href="/story">Our Story</a>
+<a href="/visit">Visit</a>
 </div>
 <a class="pill" href="https://wa.me/917806827376?text=Hi%20The%20Cane%20Shop%2C%20I%27d%20like%20to%20order" style="background: #007042; color: #FFFFFF; text-decoration: none; padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 15px; display: flex; align-items: center; gap: 8px; min-height: 44px; box-sizing: border-box">
 <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"></path></svg>
@@ -81,7 +88,7 @@ Order on WhatsApp
 </div>
 <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #33443A; max-width: 520px">Bodi's 1st Korean &amp; Gelato Café — gochujang momos, cream cheese buns, small-batch Sarang Gelato and pure sugarcane juice, in a fully air-conditioned café.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px">
-<a class="pill" href="#menu" style="background: #007042; color: #FFFFFF; text-decoration: none; padding: 15px 28px; border-radius: 999px; font-weight: 700; font-size: 16px; min-height: 48px; box-sizing: border-box">See the menu</a>
+<a class="pill" href="/menu" style="background: #007042; color: #FFFFFF; text-decoration: none; padding: 15px 28px; border-radius: 999px; font-weight: 700; font-size: 16px; min-height: 48px; box-sizing: border-box">See the menu</a>
 <a class="pill" href="https://www.google.com/maps/search/?api=1&amp;query=The+Cane+Shop+Bodinayakanur" style="border: 2px solid #007042; color: #007042; text-decoration: none; padding: 13px 26px; border-radius: 999px; font-weight: 600; font-size: 16px; min-height: 48px; box-sizing: border-box">Get directions</a>
 </div>
 <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 15px; color: #33443A">
@@ -122,21 +129,14 @@ Order on WhatsApp
 </div>
 </section>
 
-<!-- MENU -->
-<section id="menu" style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 40px">
-<div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start">
-<nav class="menu-side" aria-label="Menu categories" style="flex: 0 0 220px; display: flex; flex-direction: column; gap: 4px; position: sticky; top: 96px">
-<span style="font-size: 13px; font-weight: 700; letter-spacing: 2px; color: #007042; padding: 0 14px 10px">OUR MENU</span>
-<div id="cats" style="display: contents"></div>
-</nav>
-<div style="flex: 999 1 560px; min-width: 0">
-<p style="margin: 0 0 6px; font-size: 14px; color: #4A5A50">Menu / <strong id="crumb" style="color: #14261C"></strong></p>
-<h2 id="catTitle" class="sec-h" style="margin: 0; font-size: 40px; font-weight: 800; letter-spacing: -0.5px"></h2>
-<p id="catNote" style="margin: 8px 0 0; font-size: 16px; color: #4A5A50; max-width: 640px"></p>
-<div style="height: 1px; background: #DCD6C8; margin: 22px 0 28px"></div>
-<div id="items" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(170px, 45%), 1fr)); gap: 30px 16px"></div>
-<p style="margin: 28px 0 0; font-size: 14px; color: #4A5A50">Tap any item for details and sizes. All prices include GST.</p>
+<!-- FEATURED ROWS -->
+<section aria-label="Explore our menu" style="background: #F6F3EC">
+<div style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 56px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 14px; font-weight: 700; letter-spacing: 2px; color: #007042">EXPLORE</span>
+<h2 class="sec-h" style="margin: 0; font-size: 40px; font-weight: 800; letter-spacing: -0.5px">Something for every craving</h2>
 </div>
+<div id="rows"></div>
 </div>
 </section>
 
@@ -152,25 +152,7 @@ Order on WhatsApp
 </div>
 </section>
 
-<!-- STORY -->
-<section id="story" style="background: #FFFFFF">
-<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-wrap: wrap; gap: 48px">
-<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
-<span style="font-size: 14px; font-weight: 700; letter-spacing: 2px; color: #007042">OUR STORY</span>
-<h2 class="sec-h" style="margin: 0; font-size: 42px; font-weight: 800; letter-spacing: -0.5px">From cart to café</h2>
-<p style="margin: 0; font-size: 17px; line-height: 1.7; color: #33443A">We started in 2024 with one sugarcane juice cart and one rule: pure cane, pressed fresh — no water, no ice, no added sugar. Bodi kept coming back, so we grew.</p>
-<p style="margin: 0; font-size: 17px; line-height: 1.7; color: #33443A">Today The Cane Shop is a calm, air-conditioned café for conversation and comfort — serving Korean street food, gelato we churn ourselves, and the same honest juice that started it all.</p>
-</div>
-<ol id="timeline" style="flex: 1 1 380px; min-width: 0; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px">
-
-</ol>
-</div>
-</section>
-
 <!-- REVIEWS -->
-
-
-<!-- FAQ -->
 <section id="reviews" style="max-width: 1200px; margin: 0 auto; padding: 80px 24px">
 <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px">
 <span style="font-size: 14px; font-weight: 700; letter-spacing: 2px; color: #007042">WHAT BODI SAYS</span>
@@ -185,33 +167,7 @@ Order on WhatsApp
 </div>
 <div id="reviewsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 16px"></div>
 <a class="pill" href="https://www.google.com/maps/search/?api=1&amp;query=The+Cane+Shop+Bodinayakanur" style="display: inline-flex; margin-top: 24px; border: 2px solid #007042; color: #007042; text-decoration: none; padding: 12px 24px; border-radius: 999px; font-weight: 600; font-size: 15px; min-height: 44px; box-sizing: border-box; align-items: center">Read all reviews or write one</a>
-</section><section aria-label="Questions" style="max-width: 900px; margin: 0 auto; padding: 0 24px 80px">
-<h2 class="sec-h" style="margin: 0 0 20px; font-size: 32px; font-weight: 800">Good to know</h2>
-<div id="faqs" style="display: flex; flex-direction: column; gap: 10px"></div>
-</section>
-
-<!-- VISIT -->
-<section id="visit" style="background: #007042; color: #FFFFFF">
-<div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px; display: flex; flex-wrap: wrap; gap: 40px; align-items: stretch">
-<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
-<span style="font-size: 14px; font-weight: 700; letter-spacing: 2px; color: #BFE3CF">VISIT US</span>
-<h2 class="sec-h" style="margin: 0; font-size: 42px; font-weight: 800">Come say hi</h2>
-<div style="display: flex; flex-direction: column; gap: 14px; font-size: 17px; line-height: 1.5">
-<span><strong>Address</strong><br>W13/151/6, Bodi Thevaram Road, Bodinayakanur, Theni – 625513</span>
-<span><strong>Hours</strong><br>Every day, 9:00 AM – 10:00 PM · <span class="st-label">Open now · until 10 PM</span></span>
-<span><strong>Call / WhatsApp</strong><br><a href="tel:+917806827376" style="color: #FFFFFF">+91 78068 27376</a></span>
-<span><strong>Pay</strong><br>UPI and cash</span>
-</div>
-<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px">
-<a class="pill" href="https://www.google.com/maps/search/?api=1&amp;query=The+Cane+Shop+Bodinayakanur" style="background: #FFFFFF; color: #007042; text-decoration: none; padding: 14px 26px; border-radius: 999px; font-weight: 700; font-size: 16px; min-height: 48px; box-sizing: border-box">Open in Google Maps</a>
-<a class="pill" href="tel:+917806827376" style="border: 2px solid #FFFFFF; color: #FFFFFF; text-decoration: none; padding: 12px 24px; border-radius: 999px; font-weight: 600; font-size: 16px; min-height: 48px; box-sizing: border-box">Call now</a>
-</div>
-</div>
-<img src="storefront.jpg" alt="The Cane Shop storefront at night on Bodi Thevaram Road, with its lit sign and café seating inside" style="flex: 1 1 380px; min-width: 0; width: 100%; min-height: 320px; max-height: 460px; object-fit: cover; border-radius: 28px; display: block">
-</div>
-</section>
-
-<!-- ITEM DETAIL -->
+</section><!-- ITEM DETAIL -->
 <div id="modal" role="dialog" aria-modal="true" aria-labelledby="mName" hidden style="position: fixed; inset: 0; z-index: 60; align-items: center; justify-content: center; padding: 16px; box-sizing: border-box">
 <button type="button" class="m-close" aria-label="Close" style="position: absolute; inset: 0; background: rgba(8,24,16,.6); border: none; cursor: pointer"></button>
 <div style="position: relative; width: 100%; max-width: 720px; max-height: 92vh; overflow: auto; background: #FFFFFF; border-radius: 28px; box-shadow: 0 30px 80px rgba(0,0,0,.35)">
@@ -284,7 +240,8 @@ var menu = {
         { n: 'Fudgy Brownie + Vanilla Ice Cream', d: 'The classic pairing.', p: [170] },
         { n: 'Strawberry Up', img: 'dessert-strawberry-berryup.jpg', d: 'Flip it. Love it. Berry Up! Five layers — toasted oats & dry fruit muesli, creamy Greek yogurt, real strawberry pulp and smooth vanilla ice cream.', p: [160], m: true },
         { n: 'Blueberry Up', img: 'dessert-blueberry-berryup.jpg', d: 'Flip it. Love it. Berry Up! Toasted oats & dry fruit muesli, thick Greek yogurt and blueberry pulp, topped with vanilla ice cream.', p: [160], m: true },
-        { n: 'Mango Up', img: 'dessert-mango-berryup.jpg', d: 'Flip it. Love it. Berry Up! Five layers — toasted oats & dry fruit muesli, creamy Greek yogurt, real mango pulp and smooth vanilla ice cream.', p: [160] }
+        { n: 'Mango Up', img: 'dessert-mango-berryup.jpg', d: 'Flip it. Love it. Berry Up! Five layers — toasted oats & dry fruit muesli, creamy Greek yogurt, real mango pulp and smooth vanilla ice cream.', p: [160] },
+        { n: 'French Toast', img: 'dessert-french-toast.jpg', d: 'Golden, caramelised French toast with a scoop of vanilla ice cream, drizzled with honey and topped with roasted cashew nuts. Simple ingredients, extra happiness.', p: [null], m: true, nw: true }
       ]},
       juices: { label: 'Cane Juices', note: 'No water. No sugar. No ice. Just cane, pressed fresh — on its own or blended with real fruit.', sizes: ['Medium 300ml', 'Large 500ml'], items: [
         { n: 'Pure Cane · Lemon & Ginger', d: 'Fresh-pressed cane with lemon and ginger.', p: [45, 65], m: true },
@@ -313,29 +270,34 @@ var menu = {
     var keys = ['kbites', 'momos', 'sandwiches', 'gelato', 'desserts', 'juices', 'snacks'];
     
 var st={cat:'kbites',size:0,faq:-1,sel:-1};
+try{var qc=new URLSearchParams(location.search).get('cat');if(qc&&menu[qc])st.cat=qc;}catch(e){}
+function $(i){return document.getElementById(i);}
+function priceOf(it){var multi=it.p.length>1&&it.p[0]!==it.p[1];return it.p[0]==null?'':((multi||it.from)?'from ₹':'₹')+it.p[0];}
+function badge(it){return it.nw?'<span style="background:#D4E9E2;color:#00573A;font-size:11px;font-weight:700;letter-spacing:1px;padding:3px 8px;border-radius:999px">NEW</span>':(it.m?'<span style="background:#FDF0D5;color:#7A4B00;font-size:11px;font-weight:700;letter-spacing:1px;padding:3px 8px;border-radius:999px">MUST TRY</span>':'');}
 function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 function renderMenu(){
+  if(!$('cats'))return;
   var cur=menu[st.cat];
   var c=document.getElementById('cats');c.innerHTML='';
   keys.forEach(function(k){var on=k===st.cat;var b=document.createElement('button');b.type='button';if(on)b.setAttribute('aria-current','true');
     b.style.cssText='text-align:left;border:none;background:'+(on?'#E3F1E9':'transparent')+';color:'+(on?accent:'#33443A')+';font-family:inherit;font-size:16px;font-weight:'+(on?700:500)+';padding:11px 14px;border-radius:12px;cursor:pointer;min-height:44px';
-    b.textContent=menu[k].label;b.onclick=function(){st.cat=k;st.size=0;renderMenu();};c.appendChild(b);});
+    b.textContent=menu[k].label;b.onclick=function(){st.cat=k;st.size=0;renderMenu();try{history.replaceState(null,'','?cat='+k);}catch(e){}};c.appendChild(b);});
   document.getElementById('crumb').textContent=cur.label;document.getElementById('catTitle').textContent=cur.label;document.getElementById('catNote').textContent=cur.note;
   var g=document.getElementById('items');g.innerHTML='';
   cur.items.forEach(function(it,idx){var multi=it.p.length>1&&it.p[0]!==it.p[1];
-    var price=it.p[0]==null?'[YOUR PRICE]':((multi||it.from)?'from ₹':'₹')+it.p[0];
-    var b=document.createElement('button');b.type='button';b.className='tile';b.setAttribute('aria-label',it.n+', '+price);
+    var price=priceOf(it);
+    var b=document.createElement('button');b.type='button';b.className='tile';b.setAttribute('aria-label',it.n+(price?', '+price:''));
     b.style.cssText='background:none;border:none;padding:6px;display:flex;flex-direction:column;align-items:center;gap:12px;cursor:pointer;font-family:inherit;color:#14261C';
     b.innerHTML='<span class="tile-c" style="width:150px;height:150px;max-width:100%;aspect-ratio:1/1;border-radius:50%;background:#0B3D26;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(11,61,38,.18)">'+(it.img?'<img src="'+it.img+'" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">':CUP)+'</span>'+
       '<span style="font-size:16px;font-weight:600;text-align:center;line-height:1.3">'+esc(it.n)+'</span>'+
-      '<span style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center"><span style="font-size:15px;font-weight:700;color:'+accent+'">'+price+'</span>'+(it.m?'<span style="background:#FDF0D5;color:#7A4B00;font-size:11px;font-weight:700;letter-spacing:1px;padding:3px 8px;border-radius:999px">MUST TRY</span>':'')+'</span>';
+      '<span style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center"><span style="font-size:15px;font-weight:700;color:'+accent+'">'+price+'</span>'+badge(it)+'</span>';
     b.onclick=function(){st.sel=idx;st.size=0;openItem();};g.appendChild(b);});
 }
 var lastFocus=null;
 function openItem(){var cur=menu[st.cat],it=cur.items[st.sel];if(!it)return;
   var hs=!!cur.sizes&&it.p.length>1&&it.p[0]!==it.p[1];var zi=hs?Math.min(st.size,it.p.length-1):0;
   document.getElementById('mCat').textContent=cur.label.toUpperCase();document.getElementById('mName').textContent=it.n;document.getElementById('mDesc').textContent=it.d;
-  document.getElementById('mPrice').textContent=it.p[zi]==null?'[YOUR PRICE]':((it.from&&!hs)?'from ₹':'₹')+it.p[zi];
+  document.getElementById('mPrice').textContent=it.p[zi]==null?'New on the menu':((it.from&&!hs)?'from ₹':'₹')+it.p[zi];
   document.getElementById('mPic').innerHTML=it.img?'<img src="'+it.img+'" alt="'+esc(it.n)+'" style="width:100%;height:100%;object-fit:cover;display:block;background:#F5EFE4">':CUP;
   var w=document.getElementById('mSizesWrap'),z=document.getElementById('mSizes');w.style.display=hs?'flex':'none';z.innerHTML='';
   if(hs)cur.sizes.forEach(function(l,i){var on=i===zi;var b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed',on);
@@ -346,8 +308,24 @@ function openItem(){var cur=menu[st.cat],it=cur.items[st.sel];if(!it)return;
   var m=document.getElementById('modal');if(m.hidden){lastFocus=document.activeElement;m.hidden=false;document.body.style.overflow='hidden';m.querySelector('.m-close:last-of-type').focus();}
 }
 function closeItem(){var m=document.getElementById('modal');m.hidden=true;document.body.style.overflow='';st.sel=-1;if(lastFocus)lastFocus.focus();}
-document.querySelectorAll('#modal .m-close').forEach(function(b){b.onclick=closeItem;});
-document.getElementById('modal').addEventListener('keydown',function(e){if(e.key==='Escape')closeItem();});
+if($('modal')){document.querySelectorAll('#modal .m-close').forEach(function(b){b.onclick=closeItem;});
+document.getElementById('modal').addEventListener('keydown',function(e){if(e.key==='Escape')closeItem();});}
+
+function card(k,idx){var it=menu[k].items[idx];var pr=priceOf(it);
+  return '<button type="button" class="rcard" data-k="'+k+'" data-i="'+idx+'" aria-label="'+esc(it.n)+(pr?', '+pr:'')+'" style="flex:0 0 220px;scroll-snap-align:start;background:#FFFFFF;border:none;border-radius:16px;padding:0;overflow:hidden;cursor:pointer;font-family:inherit;color:#14261C;text-align:left;box-shadow:0 1px 3px rgba(0,0,0,.08),0 6px 16px rgba(0,0,0,.06);display:flex;flex-direction:column">'+
+  '<span style="display:block;aspect-ratio:1/1;background:'+(it.img?'#FFFFFF':'#0B3D26')+';overflow:hidden;display:flex;align-items:center;justify-content:center">'+(it.img?'<img src="'+it.img+'" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;max-width:none">':CUP)+'</span>'+
+  '<span style="padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:700;line-height:1.3">'+esc(it.n)+'</span><span style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="font-size:14px;font-weight:700;color:'+accent+'">'+pr+'</span>'+badge(it)+'</span></span></button>';}
+function renderRows(){var el=$('rows');if(!el)return;var h='';
+  var feat=[];keys.forEach(function(k){menu[k].items.forEach(function(it,i){if(it.img&&(it.m||it.nw))feat.push([k,i]);});});
+  var groups=[['FEATURED',null,feat]].concat(keys.filter(function(k){return menu[k].items.some(function(it){return it.img;});}).map(function(k){return [menu[k].label.toUpperCase(),k,menu[k].items.map(function(_,i){return [k,i];})];}));
+  groups.forEach(function(g,gi){
+    h+='<section class="row" aria-label="'+esc(g[0])+'" style="padding:28px 0 8px"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px"><h2 style="margin:0;font-size:15px;font-weight:700;letter-spacing:2px;color:#1E3932">'+esc(g[0])+'</h2><div style="display:flex;align-items:center;gap:10px">'+
+    (g[1]?'<a href="/menu?cat='+g[1]+'" style="font-size:14px;font-weight:600;color:#14261C">See all</a>':'<a href="/menu" style="font-size:14px;font-weight:600;color:#14261C">See all</a>')+
+    '<button type="button" class="rprev" aria-label="Previous" style="width:36px;height:36px;border-radius:50%;border:1px solid #C9C2B2;background:#FFFFFF;cursor:pointer;font-size:18px;color:#14261C">‹</button><button type="button" class="rnext" aria-label="Next" style="width:36px;height:36px;border-radius:50%;border:1px solid #C9C2B2;background:#FFFFFF;cursor:pointer;font-size:18px;color:#14261C">›</button></div></div>'+
+    '<div class="rtrack" style="display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 18px;scrollbar-width:none">'+g[2].map(function(x){return card(x[0],x[1]);}).join('')+'</div></section>';});
+  el.innerHTML=h;
+  el.querySelectorAll('.row').forEach(function(r){var t=r.querySelector('.rtrack');r.querySelector('.rprev').onclick=function(){t.scrollBy({left:-t.clientWidth*.8,behavior:'smooth'});};r.querySelector('.rnext').onclick=function(){t.scrollBy({left:t.clientWidth*.8,behavior:'smooth'});};});
+  el.querySelectorAll('.rcard').forEach(function(b){b.onclick=function(){st.cat=b.getAttribute('data-k');st.sel=+b.getAttribute('data-i');st.size=0;openItem();};});}
 var faqData = [
       { q: 'Is there seating and AC?', a: 'Yes — we are a fully air-conditioned dine-in café with indoor and outdoor seating, kept at a comfortable 24°C.' },
       { q: 'Do you have vegetarian options?', a: 'Plenty. Most of our menu is vegetarian, and we also serve chicken momos for non-veg lovers.' },
@@ -356,7 +334,7 @@ var faqData = [
       { q: 'Is your juice really pure?', a: 'Always. No water, no ice and no added sugar — fruit juices are blended with pure sugarcane juice instead.' }
     ];
     
-function renderFaq(){var h='';faqData.forEach(function(f,i){var o=st.faq===i;
+function renderFaq(){if(!$('faqs'))return;var h='';faqData.forEach(function(f,i){var o=st.faq===i;
   h+='<div style="background:#FFFFFF;border:1px solid #E4E0D6;border-radius:18px"><button type="button" data-i="'+i+'" aria-expanded="'+o+'" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;background:none;border:none;padding:18px 22px;font-family:inherit;font-size:16px;font-weight:600;color:#14261C;text-align:left;cursor:pointer;min-height:56px"><span>'+esc(f.q)+'</span><span aria-hidden="true" style="font-size:22px;color:'+accent+'">'+(o?'−':'+')+'</span></button>'+(o?'<p style="margin:0;padding:0 22px 20px;font-size:15px;line-height:1.6;color:#4A5A50">'+esc(f.a)+'</p>':'')+'</div>';});
   var el=document.getElementById('faqs');el.innerHTML=h;el.querySelectorAll('button').forEach(function(b){b.onclick=function(){var i=+b.getAttribute('data-i');st.faq=st.faq===i?-1:i;renderFaq();};});}
 var data={timeline: [
@@ -368,12 +346,12 @@ var data={timeline: [
         { quote: 'Great ambiance with cool experience — must try shop in Bodinayakanur.', who: 'Gowshik' },
         { quote: 'I love their food, service was awesome, and the atmosphere is the best in Bodi for a digital detox.', who: 'Dr. Saravanan G.' }
       ]};
-document.getElementById('timeline').innerHTML=data.timeline.map(function(t){return '<li style="display:flex;gap:18px;align-items:flex-start;background:#F6F3EC;border-radius:20px;padding:20px"><span style="flex:none;background:'+accent+';color:#FFFFFF;font-weight:700;font-size:14px;padding:8px 14px;border-radius:999px">'+esc(t.when)+'</span><span style="display:flex;flex-direction:column;gap:4px"><span style="font-weight:700;font-size:17px">'+esc(t.title)+'</span><span style="font-size:15px;color:#4A5A50;line-height:1.5">'+esc(t.text)+'</span></span></li>';}).join('');
-document.getElementById('reviewsGrid').innerHTML=data.reviews.map(function(r){return '<figure class="card" style="margin:0;background:#FFFFFF;border:1px solid #E4E0D6;border-radius:22px;padding:26px;display:flex;flex-direction:column;gap:14px"><blockquote style="margin:0;font-size:17px;line-height:1.6;font-style:italic">“'+esc(r.quote)+'”</blockquote><figcaption style="font-size:14px;font-weight:600;color:#4A5A50">— '+esc(r.who)+', Google review</figcaption></figure>';}).join('');
+if($('timeline'))document.getElementById('timeline').innerHTML=data.timeline.map(function(t){return '<li style="display:flex;gap:18px;align-items:flex-start;background:#F6F3EC;border-radius:20px;padding:20px"><span style="flex:none;background:'+accent+';color:#FFFFFF;font-weight:700;font-size:14px;padding:8px 14px;border-radius:999px">'+esc(t.when)+'</span><span style="display:flex;flex-direction:column;gap:4px"><span style="font-weight:700;font-size:17px">'+esc(t.title)+'</span><span style="font-size:15px;color:#4A5A50;line-height:1.5">'+esc(t.text)+'</span></span></li>';}).join('');
+if($('reviewsGrid'))document.getElementById('reviewsGrid').innerHTML=data.reviews.map(function(r){return '<figure class="card" style="margin:0;background:#FFFFFF;border:1px solid #E4E0D6;border-radius:22px;padding:26px;display:flex;flex-direction:column;gap:14px"><blockquote style="margin:0;font-size:17px;line-height:1.6;font-style:italic">“'+esc(r.quote)+'”</blockquote><figcaption style="font-size:14px;font-weight:600;color:#4A5A50">— '+esc(r.who)+', Google review</figcaption></figure>';}).join('');
 function status(){var n=new Date();var m=(n.getUTCHours()*60+n.getUTCMinutes()+330)%1440;var open=m>=540&&m<1320;
   document.querySelectorAll('.st-label').forEach(function(e){e.textContent=open?'Open now · until 10 PM':'Closed now · opens 9 AM';});
   document.querySelectorAll('.st-dot').forEach(function(e){e.style.background=open?'#1FA463':'#F2A65A';});}
-renderMenu();renderFaq();status();setInterval(status,60000);
+renderMenu();renderFaq();renderRows();status();setInterval(status,60000);
 document.querySelectorAll('a[href^="https://"]').forEach(function(a){a.target='_blank';a.rel='noopener';});
 })();
 </script>
