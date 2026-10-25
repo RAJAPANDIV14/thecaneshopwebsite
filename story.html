@@ -153,11 +153,11 @@ var CUP='<svg aria-hidden="true" width="56" height="56" viewBox="0 0 24 24" fill
 var menu = {
       kbites: { label: 'K-Bites', note: 'Flavours of Korea, made fresh in-house every day.', items: [
         { n: 'Korean Cream Cheese Bun', d: 'Soft-baked bun with rich garlic butter and creamy cheese.', p: [89], m: true },
-        { n: 'Gochujang Glazed Momos', img: 'momo-gochujang.jpg', d: 'Steamed momos in sweet & spicy gochujang sauce, 5 pcs. Veg ₹150 · Chicken ₹160.', p: [150], m: true, from: true }
+        { n: 'Gochujang Glazed Momos', img: 'momo-gochujang.jpg', d: 'Steamed momos in sweet & spicy gochujang sauce, 5 pcs.', sizes: ['Veg', 'Chicken'], p: [150, 160], m: true }
       ]},
       momos: { label: 'Himalayan Momos', note: 'Soft, juicy and made to order — 6 pieces per plate.', items: [
-        { n: 'Steamed Momos', img: 'momo-steamed.jpg', d: 'Served with our signature spicy chutney. Veg ₹120 · Chicken ₹130.', p: [120], from: true },
-        { n: 'Jhol Momos', img: 'momo-jhol.jpg', d: 'Steamed momos in a rich, spicy Nepalese jhol broth. Veg ₹150 · Chicken ₹160.', p: [150], from: true }
+        { n: 'Steamed Momos', img: 'momo-steamed.jpg', d: 'Served with our signature spicy chutney.', sizes: ['Veg', 'Chicken'], p: [120, 130] },
+        { n: 'Jhol Momos', img: 'momo-jhol.jpg', d: 'Steamed momos in a rich, spicy Nepalese jhol broth.', sizes: ['Veg', 'Chicken'], p: [150, 160] }
       ]},
       gelato: { label: 'Sarang Gelato', note: 'Authentic Italian-style gelato, churned in-house in small batches with natural milk and cream.', sizes: ['Dine-in 100g', 'Takeaway 200g'], items: [
         { n: 'Rocky Road', img: 'gelato-rocky-road.jpg', d: 'NEW! Caramel gelato churned in-house, loaded with fudgy brownie chunks and roasted salted almonds. Sweet, salty, crunchy, gooey.', p: [179, 358], m: true, nw: true },
@@ -178,7 +178,7 @@ var menu = {
         { n: 'Mango Up', img: 'dessert-mango-berryup.jpg', d: 'Flip it. Love it. Berry Up! Five layers — toasted oats & dry fruit muesli, creamy Greek yogurt, real mango pulp and smooth vanilla ice cream.', p: [160] },
         { n: 'French Toast', img: 'dessert-french-toast.jpg', d: 'Golden, caramelised French toast with a scoop of vanilla ice cream, drizzled with honey and topped with roasted cashew nuts. Simple ingredients, extra happiness.', p: [null], m: true, nw: true }
       ]},
-      juices: { label: 'Cane Juices', note: 'No water. No sugar. No ice. Just cane, pressed fresh — on its own or blended with real fruit.', sizes: ['Medium 300ml', 'Large 500ml'], items: [
+      juices: { label: 'Cane Juices', note: 'No water. No sugar. No ice. Just cane, pressed fresh — on its own or blended with real fruit.', sizes: ['300ml', '500ml'], items: [
         { n: 'Pure Cane · Lemon & Ginger', d: 'Fresh-pressed cane with lemon and ginger.', p: [45, 65], m: true },
         { n: 'Pure Cane · Mint', d: 'Fresh-pressed cane with mint.', p: [45, 65] },
         { n: 'Apple Cane', img: 'juice-apple.jpg', d: 'Real apple blended with pure cane.', p: [95, 149], m: true },
@@ -189,7 +189,7 @@ var menu = {
         { n: 'Watermelon Cane', img: 'juice-watermelon.jpg', d: 'Real watermelon blended with pure cane.', p: [65, 99], m: true },
         { n: 'Muskmelon Cane', img: 'juice-muskmelon.jpg', d: 'Real muskmelon blended with pure cane.', p: [65, 99] },
         { n: 'Guava Cane', img: 'juice-guava.jpg', d: 'Real guava blended with pure cane.', p: [65, 99] },
-        { n: 'ABC Cold-Pressed (300ml)', d: 'Apple, beetroot & carrot, hydraulic cold-pressed with zero heat.', p: [135, 135], m: true }
+        { n: 'ABC Cold-Pressed (300ml)', d: 'Apple, beetroot & carrot, hydraulic cold-pressed with zero heat.', p: [135], m: true }
       ]},
       sandwiches: { label: 'Grilled Sandwiches', note: 'Hot off the grill, made fresh to order — perfect with a cane juice.', items: [
         { n: 'White Cream Chicken Sandwich', img: 'sandwich-cream-chicken.jpg', d: 'Tender chicken in rich white cream sauce with cheese, fresh veggies and herbs.', p: [160], m: true },
@@ -198,8 +198,8 @@ var menu = {
       ]},
       snacks: { label: 'Snacks', note: 'Crispy bites from Tamil Nadu and beyond.', items: [
         { n: 'Salem Special Norukkal', d: 'Salem’s crunchy classic — a wholesome mix of crunch and flavour.', p: [85] },
-        { n: 'Salt & Pepper Fries', d: 'Cracked pepper and sea salt. Mini ₹99 · Large ₹139.', p: [99], from: true },
-        { n: 'Peri Peri Fries', d: 'Bold, smoky peri peri seasoning. Mini ₹99 · Large ₹139.', p: [99], from: true }
+        { n: 'Salt & Pepper Fries', d: 'Cracked pepper and sea salt.', sizes: ['Mini', 'Large'], p: [99, 139] },
+        { n: 'Peri Peri Fries', d: 'Bold, smoky peri peri seasoning.', sizes: ['Mini', 'Large'], p: [99, 139] }
       ]}
     };
     var keys = ['kbites', 'momos', 'sandwiches', 'gelato', 'desserts', 'juices', 'snacks'];
@@ -209,6 +209,7 @@ try{var qc=new URLSearchParams(location.search).get('cat');if(qc&&menu[qc])st.ca
 function $(i){return document.getElementById(i);}
 function priceOf(it){var multi=it.p.length>1&&it.p[0]!==it.p[1];return it.p[0]==null?'':((multi||it.from)?'from ₹':'₹')+it.p[0];}
 function badge(it){return it.nw?'<span style="background:#D4E9E2;color:#00573A;font-size:11px;font-weight:700;letter-spacing:1px;padding:3px 8px;border-radius:999px">NEW</span>':(it.m?'<span style="background:#FDF0D5;color:#7A4B00;font-size:11px;font-weight:700;letter-spacing:1px;padding:3px 8px;border-radius:999px">MUST TRY</span>':'');}
+function SZ(cur,it){return it.sizes||cur.sizes;}
 function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 function renderMenu(){
   if(!$('cats'))return;
@@ -230,25 +231,30 @@ function renderMenu(){
     var w=document.createElement('div');w.style.cssText='display:flex;flex-direction:column;align-items:center;gap:6px';w.appendChild(b);
     var q=document.createElement('button');q.type='button';q.className='qadd';q.setAttribute('aria-label','Add '+it.n+' to order');q.textContent='+ Add';
     q.style.cssText='border:1.5px solid '+accent+';background:#fff;color:'+accent+';border-radius:999px;padding:6px 16px;font-family:inherit;font-weight:700;font-size:13px;cursor:pointer;min-height:34px';
-    q.onclick=function(){addToCart(st.cat,idx,0,1);};w.appendChild(q);g.appendChild(w);});
+    var opts=SZ(cur,it);var many=!!opts&&it.p.length>1&&it.p[0]!==it.p[1];
+    if(many){var row=document.createElement('div');row.style.cssText='display:flex;gap:6px;flex-wrap:wrap;justify-content:center';
+      opts.forEach(function(o,zi){var ob=q.cloneNode(false);ob.textContent='+ '+o.replace(/^(Dine-in|Takeaway) /,'');ob.setAttribute('aria-label','Add '+it.n+' '+o+' to order');ob.style.padding='6px 12px';ob.onclick=function(){addToCart(st.cat,idx,zi,1);};row.appendChild(ob);});
+      w.appendChild(row);}
+    else{q.onclick=function(){addToCart(st.cat,idx,0,1);};w.appendChild(q);}
+    g.appendChild(w);});
 }
 var lastFocus=null;
 function openItem(){var cur=menu[st.cat],it=cur.items[st.sel];if(!it)return;
-  var hs=!!cur.sizes&&it.p.length>1&&it.p[0]!==it.p[1];var zi=hs?Math.min(st.size,it.p.length-1):0;
+  var hs=!!SZ(cur,it)&&it.p.length>1&&it.p[0]!==it.p[1];var zi=hs?Math.min(st.size,it.p.length-1):0;
   document.getElementById('mCat').textContent=cur.label.toUpperCase();document.getElementById('mName').textContent=it.n;document.getElementById('mDesc').textContent=it.d;
   document.getElementById('mPrice').textContent=it.p[zi]==null?'New on the menu':((it.from&&!hs)?'from ₹':'₹')+it.p[zi];
   document.getElementById('mPic').innerHTML=it.img?'<img src="'+it.img+'" alt="'+esc(it.n)+'" style="width:100%;height:100%;object-fit:cover;display:block;background:#F5EFE4">':CUP;
   var w=document.getElementById('mSizesWrap'),z=document.getElementById('mSizes');w.style.display=hs?'flex':'none';z.innerHTML='';
-  if(hs)cur.sizes.forEach(function(l,i){var on=i===zi;var b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed',on);
+  if(hs)SZ(cur,it).forEach(function(l,i){var on=i===zi;var b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed',on);
     b.style.cssText='display:flex;flex-direction:column;align-items:center;gap:6px;min-width:120px;padding:14px 16px;border-radius:18px;border:2px solid '+(on?accent:'#DCD6C8')+';background:'+(on?'#E3F1E9':'#FFFFFF')+';cursor:pointer;font-family:inherit;color:#14261C';
     b.innerHTML='<svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12l-1.4 17H7.4z"></path><path d="M6.6 9h10.8"></path></svg><span style="font-size:15px;font-weight:700">'+esc(l)+'</span><span style="font-size:14px;color:#4A5A50">₹'+it.p[i]+'</span>';
     b.onclick=function(){st.size=i;openItem();};z.appendChild(b);});
   st.qty=st.qty||1;$('mQty').textContent=st.qty;$('mAdd').textContent='Add '+st.qty+' to order';
-  document.getElementById('mWa').href=WA+encodeURIComponent('Hi The Cane Shop, I’d like to order: '+it.n+(hs?' ('+cur.sizes[zi]+')':''));
+  document.getElementById('mWa').href=WA+encodeURIComponent('Hi The Cane Shop, I’d like to order: '+it.n+(hs?' ('+SZ(cur,it)[zi]+')':''));
   var m=document.getElementById('modal');if(m.hidden){lastFocus=document.activeElement;m.hidden=false;document.body.style.overflow='hidden';m.querySelector('.m-close:last-of-type').focus();}
 }
 if($('mAdd')){$('mPlus').onclick=function(){st.qty=Math.min(20,(st.qty||1)+1);openItem();};$('mMinus').onclick=function(){st.qty=Math.max(1,(st.qty||1)-1);openItem();};
- $('mAdd').onclick=function(){var cur=menu[st.cat],it=cur.items[st.sel];var hs=!!cur.sizes&&it.p.length>1&&it.p[0]!==it.p[1];addToCart(st.cat,st.sel,hs?st.size:0,st.qty||1);closeItem();};}
+ $('mAdd').onclick=function(){var cur=menu[st.cat],it=cur.items[st.sel];var hs=!!SZ(cur,it)&&it.p.length>1&&it.p[0]!==it.p[1];addToCart(st.cat,st.sel,hs?st.size:0,st.qty||1);closeItem();};}
 function closeItem(){var m=document.getElementById('modal');m.hidden=true;document.body.style.overflow='';st.sel=-1;st.qty=1;if(lastFocus)lastFocus.focus();}
 if($('modal')){document.querySelectorAll('#modal .m-close').forEach(function(b){b.onclick=closeItem;});
 document.getElementById('modal').addEventListener('keydown',function(e){if(e.key==='Escape')closeItem();});}
@@ -272,8 +278,8 @@ function renderRows(){var el=$('rows');if(!el)return;var h='';
 var cart=[];try{cart=JSON.parse(localStorage.getItem('caneCart')||'[]')||[];}catch(e){cart=[];}
 cart=cart.filter(function(c){return menu[c.k]&&menu[c.k].items[c.i];});
 function saveCart(){try{localStorage.setItem('caneCart',JSON.stringify(cart));}catch(e){}}
-function lineInfo(c){var cur=menu[c.k],it=cur.items[c.i];var hs=!!cur.sizes&&it.p.length>1&&it.p[0]!==it.p[1];
-  var pr=it.p[hs?c.z:0];return {name:it.n+(hs?' ('+cur.sizes[c.z]+')':''),price:pr,img:it.img};}
+function lineInfo(c){var cur=menu[c.k],it=cur.items[c.i];var hs=!!SZ(cur,it)&&it.p.length>1&&it.p[0]!==it.p[1];
+  var pr=it.p[hs?c.z:0];return {name:it.n+(hs?' ('+SZ(cur,it)[c.z]+')':''),price:pr,img:it.img};}
 function addToCart(k,i,z,q){var f=cart.filter(function(c){return c.k===k&&c.i===i&&c.z===z;})[0];
   if(f)f.q=Math.min(50,f.q+q);else cart.push({k:k,i:i,z:z,q:q});saveCart();renderCart();
   var t=$('cartToast');if(t){t.textContent='Added: '+lineInfo({k:k,i:i,z:z}).name+(q>1?' × '+q:'');t.style.opacity='1';clearTimeout(t._h);t._h=setTimeout(function(){t.style.opacity='0';},1800);}}
