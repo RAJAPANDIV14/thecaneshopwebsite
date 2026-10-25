@@ -167,6 +167,9 @@ footer.foot{border-top:1px solid var(--line);padding:40px 0;font-size:13px;color
 .gthemes{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .gth{border:2px solid var(--line);border-radius:16px;padding:12px;text-align:left;cursor:pointer;background:#fff}
 .gth[aria-pressed="true"]{border-color:var(--gr)}
+.ggreet{display:flex;flex-wrap:wrap;gap:8px}
+.ggr{border:1.5px solid #CFCBC0;border-radius:999px;padding:8px 14px;font-size:13px;font-weight:600;background:#fff;cursor:pointer}
+.ggr[aria-pressed="true"]{border-color:var(--gr);background:#E3F1E9;color:var(--dk);font-weight:800}
 .gamts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .gamt{border:1.5px solid #CFCBC0;border-radius:14px;padding:12px 0;font-weight:800;font-size:16px;background:#fff;cursor:pointer}
 .gamt[aria-pressed="true"]{border:2px solid var(--gr);background:#E3F1E9;color:var(--dk)}
@@ -354,7 +357,8 @@ footer.foot{border-top:1px solid var(--line);padding:40px 0;font-size:13px;color
   <div class="ggrid">
    <div class="gform">
     <div><div class="glabel">1. Choose a design</div><div class="gthemes" id="gThemes"></div></div>
-    <div><div class="glabel">2. Choose amount</div><div class="gamts" id="gAmts"></div></div>
+    <div><div class="glabel">2. Choose a greeting</div><div class="ggreet" id="gGreets"></div><input id="gCustom" placeholder="Or type your own greeting…" maxlength="28" style="margin-top:10px;width:100%;border:1px solid #CFCBC0;border-radius:12px;padding:11px 14px;font-size:14px;font-family:inherit"></div>
+    <div><div class="glabel">3. Choose amount</div><div class="gamts" id="gAmts"></div></div>
     <div class="row2"><label class="gfield">To (their name)<input id="gTo" value="" placeholder="e.g. Priya" maxlength="30"></label><label class="gfield">From (your name)<input id="gFrom" placeholder="e.g. Raja" maxlength="30"></label></div>
     <label class="gfield">Their WhatsApp number (optional)<input id="gPhone" inputmode="tel" placeholder="We'll send the e-gift to them directly" maxlength="15"></label>
     <label class="gfield">Personal message<textarea id="gMsg" rows="2" maxlength="140" placeholder="Happy birthday! Treat yourself to some gelato.">Happy birthday! Treat yourself to some gelato 🍨</textarea></label>
@@ -365,7 +369,7 @@ footer.foot{border-top:1px solid var(--line);padding:40px 0;font-size:13px;color
     <div class="glabel">Live preview</div>
     <div id="gCard" class="gcard">
      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px"><div><div style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;opacity:.85">The Cane Shop e-Gift</div><div id="gTitle" class="serif" style="font-size:26px;font-weight:700;margin-top:2px">Classic Green</div></div><img src="logo.png" alt="" style="width:52px;height:52px;border-radius:50%;background:#fff;padding:3px"></div>
-     <div id="gEmoji" style="font-size:40px;line-height:1">💚</div>
+     <div style="display:flex;align-items:center;gap:12px"><span id="gEmoji" style="font-size:38px;line-height:1">💚</span><span id="gGreetP" class="serif" style="font-size:28px;font-weight:700;line-height:1.1">Happy Birthday!</span></div>
      <div style="display:flex;justify-content:space-between;align-items:flex-end"><div style="font-size:13px;line-height:1.5"><div>For: <b id="gToP">Someone special</b></div><div style="opacity:.8">From: <span id="gFromP">—</span></div></div><div id="gAmtP" style="font-size:36px;font-weight:800">₹500</div></div>
     </div>
     <div id="gMsgP" style="margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;font-style:italic;color:#33443A;font-size:14px"></div>
@@ -546,17 +550,19 @@ function calc(){var s=+$('spend').value;var pts=s>=100?Math.floor(s/20):0;$('spe
   $('barV').style.width=Math.min(100,pts)+'%';}
 // ---------- gift cards ----------
 var GTH=[['Classic Green','💚','linear-gradient(135deg,#0B3D26,#007042)','#fff'],['Sarang Gelato','🍨','linear-gradient(135deg,#3A0F44,#8E3B9E)','#fff'],['Happy Birthday','🎂','linear-gradient(135deg,#C8873A,#E8B04B)','#1E1208'],['Thank You','🙏','linear-gradient(135deg,#D4E9E2,#A8D5C2)','#0B3D26']];
-var GAM=[200,500,1000,2000];var gs={t:0,a:1};
+var GAM=[200,500,1000,2000];var GGR=['Happy Birthday!','Thank You!','Congratulations!','Happy Anniversary!','Happy Diwali!','Best Wishes!','Just for You'];var gs={t:0,a:1,g:0};
 function drawGift(){
   $('gThemes').innerHTML=GTH.map(function(g,i){return '<button class="gth" data-gt="'+i+'" aria-pressed="'+(i===gs.t)+'"><div style="height:34px;border-radius:8px;background:'+g[2]+';margin-bottom:8px;display:flex;align-items:center;justify-content:center;font-size:18px">'+g[1]+'</div><b style="font-size:12.5px">'+g[0]+'</b></button>';}).join('');
+  $('gGreets').innerHTML=GGR.map(function(x,i){return '<button class="ggr" data-gg="'+i+'" aria-pressed="'+(i===gs.g&&!$('gCustom').value)+'">'+x+'</button>';}).join('');
+  var greet=$('gCustom').value.trim()||GGR[gs.g];$('gGreetP').textContent=greet;
   $('gAmts').innerHTML=GAM.map(function(a,i){return '<button class="gamt" data-ga="'+i+'" aria-pressed="'+(i===gs.a)+'">₹'+a.toLocaleString('en-IN')+'</button>';}).join('');
   var g=GTH[gs.t],c=$('gCard');c.style.background=g[2];c.style.color=g[3];$('gTitle').textContent=g[0];$('gEmoji').textContent=g[1];
   $('gAmtP').textContent='₹'+GAM[gs.a].toLocaleString('en-IN');$('gToP').textContent=$('gTo').value||'Someone special';$('gFromP').textContent=$('gFrom').value||'—';
   $('gMsgP').textContent='“'+($('gMsg').value||'Enjoy a treat on me!')+'”';
-  var m='Hi The Cane Shop, I’d like to buy an e-gift card:\n• Amount: ₹'+GAM[gs.a]+'\n• Design: '+g[0]+'\n• To: '+($('gTo').value||'')+'\n• From: '+($('gFrom').value||'')+'\n• Send to WhatsApp: '+($('gPhone').value||'(send to me)')+'\n• Message: '+($('gMsg').value||'')+'\n\nPlease share UPI payment details.';
+  var m='Hi The Cane Shop, I’d like to buy an e-gift card:\n• Amount: ₹'+GAM[gs.a]+'\n• Design: '+g[0]+'\n• Greeting: '+greet+'\n• To: '+($('gTo').value||'')+'\n• From: '+($('gFrom').value||'')+'\n• Send to WhatsApp: '+($('gPhone').value||'(send to me)')+'\n• Message: '+($('gMsg').value||'')+'\n\nPlease share UPI payment details.';
   $('gSend').href=WA+encodeURIComponent(m);}
-document.addEventListener('click',function(e){var b=e.target.closest('[data-gt],[data-ga]');if(!b)return;if(b.hasAttribute('data-gt'))gs.t=+b.getAttribute('data-gt');else gs.a=+b.getAttribute('data-ga');drawGift();});
-['gTo','gFrom','gPhone','gMsg'].forEach(function(i){$(i).addEventListener('input',drawGift);});
+document.addEventListener('click',function(e){var b=e.target.closest('[data-gt],[data-ga],[data-gg]');if(!b)return;if(b.hasAttribute('data-gg')){gs.g=+b.getAttribute('data-gg');$('gCustom').value='';}else if(b.hasAttribute('data-gt')){gs.t=+b.getAttribute('data-gt');var dg={2:0,3:1}[gs.t];if(dg!=null&&!$('gCustom').value)gs.g=dg;}else gs.a=+b.getAttribute('data-ga');drawGift();});
+['gTo','gFrom','gPhone','gMsg','gCustom'].forEach(function(i){$(i).addEventListener('input',drawGift);});
 $('gSend').addEventListener('click',function(){try{gtag('event','gift_card_request',{value:GAM[gs.a],currency:'INR'});}catch(x){}});
 drawGift();
 // ---------- views ----------
