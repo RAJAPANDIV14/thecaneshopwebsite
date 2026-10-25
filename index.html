@@ -69,6 +69,10 @@ header.top{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px so
 .fcard{display:flex;flex-direction:column;border-radius:20px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.05)}
 .fimg{position:relative;aspect-ratio:4/3;overflow:hidden;background:#EEE;cursor:pointer}
 .fimg img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.fimg .bgi{position:absolute;inset:0;filter:blur(22px) saturate(1.15);transform:scale(1.25);opacity:.85}
+.fimg .fgi{position:relative;object-fit:contain}
+.fimg .fgi.wide{object-fit:cover}
+.fcard:hover .fimg .bgi{transform:scale(1.25)}
 .fcard:hover .fimg img,.banner:hover .fimg img{transform:scale(1.05)}
 .newtag{position:absolute;top:16px;left:16px;background:var(--mint);color:var(--dk);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:999px;box-shadow:0 2px 6px rgba(0,0,0,.12)}
 .heart{position:absolute;top:14px;right:14px;width:42px;height:42px;border-radius:50%;border:none;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.15)}
@@ -207,7 +211,8 @@ footer.foot{border-top:1px solid var(--line);padding:40px 0;font-size:13px;color
  .toasts{top:auto;bottom:90px;left:16px;right:16px;align-items:center}
  .mgrid{padding-top:16px}
  .wrap{padding:0 16px}
- .banner .fimg{min-height:0;aspect-ratio:4/3}
+ .banner .fimg{min-height:0;aspect-ratio:1/1}
+ .fcard .fimg{aspect-ratio:1/1}
  .fcols{grid-template-columns:1fr 1fr}
  .thumb{width:88px;height:88px}
  .bagbtn .lbl{display:none}
@@ -428,7 +433,7 @@ function renderFeatured(){
   $('showcase').innerHTML=html;
 }
 function card(it){var t=THEMES[it.k];var on=favs.indexOf(it.id)>-1;
-  return '<article class="fcard"><div class="fimg" data-open="'+it.id+'"><img src="'+it.img+'" alt="'+esc(it.n)+'" loading="lazy">'+(it.nw?'<span class="newtag">New</span>':'')+
+  return '<article class="fcard"><div class="fimg" data-open="'+it.id+'"><img class="bgi" src="'+it.img+'" alt="" aria-hidden="true" loading="lazy"><img class="fgi" src="'+it.img+'" alt="'+esc(it.n)+'" loading="lazy" onload="if(this.naturalWidth/this.naturalHeight>1.4)this.classList.add(\'wide\')">'+(it.nw?'<span class="newtag">New</span>':'')+
   '<button class="heart" data-fav="'+it.id+'" aria-label="'+(on?'Remove from':'Save to')+' favourites">'+heartSvg(on)+'</button></div>'+
   '<div class="fbody" style="background:'+t[0]+';color:'+t[1]+'"><span style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:8px">'+esc(it.cat)+'</span><h2 class="serif">'+esc(it.n)+'</h2><p>'+esc(it.d)+'</p><div class="fprice">'+priceTxt(it)+(it.m?' · Must try':'')+'</div>'+
   '<button class="cta'+(t[2]?'':' dark')+'" data-open="'+it.id+'">'+(it.nw?'Try it now':'Order now')+'</button></div></article>';}
