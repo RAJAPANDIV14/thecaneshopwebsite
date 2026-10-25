@@ -45,7 +45,7 @@ else if(h.indexOf('google.com/maps')>-1)gtag('event','directions_click');},true)
 .navlinks a{position:relative;padding:8px 0;font-weight:600;letter-spacing:.3px}
 .navlinks a[aria-current="page"]{color:#007042}
 .navlinks a[aria-current="page"]::after{content:"";position:absolute;left:0;right:0;bottom:-15px;height:4px;background:#007042;border-radius:2px}
-.rtrack::-webkit-scrollbar{display:none}
+[hidden]{display:none!important}.rtrack::-webkit-scrollbar{display:none}
 .rcard:hover{transform:translateY(-3px);box-shadow:0 4px 10px rgba(0,0,0,.1),0 14px 30px rgba(0,0,0,.1)!important}.rcard{transition:transform .2s,box-shadow .2s}
 @media (max-width:760px){.navlinks{display:flex!important;order:3;width:100%;justify-content:space-around;gap:2px!important;font-size:14px;border-top:1px solid #EEE9DF;padding-top:6px}.navlinks a[aria-current="page"]::after{bottom:-6px}.ph-h{font-size:34px!important}.tiles4{grid-template-columns:1fr 1fr!important}.journey{flex-direction:column!important;align-items:center!important;gap:6px!important}.journey img{flex:none!important;width:min(70%,240px)!important}.journey img:last-child{width:100%!important}.jarrow{transform:rotate(90deg)}.rcard{flex-basis:160px!important}}
 </style>
@@ -196,7 +196,11 @@ function renderMenu(){
     b.innerHTML='<span class="tile-c" style="width:150px;height:150px;max-width:100%;aspect-ratio:1/1;border-radius:50%;background:#0B3D26;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(11,61,38,.18)">'+(it.img?'<img src="'+it.img+'" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">':CUP)+'</span>'+
       '<span style="font-size:16px;font-weight:600;text-align:center;line-height:1.3">'+esc(it.n)+'</span>'+
       '<span style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center"><span style="font-size:15px;font-weight:700;color:'+accent+'">'+price+'</span>'+badge(it)+'</span>';
-    b.onclick=function(){st.sel=idx;st.size=0;openItem();};g.appendChild(b);});
+    b.onclick=function(){st.sel=idx;st.size=0;openItem();};
+    var w=document.createElement('div');w.style.cssText='display:flex;flex-direction:column;align-items:center;gap:6px';w.appendChild(b);
+    var q=document.createElement('button');q.type='button';q.className='qadd';q.setAttribute('aria-label','Add '+it.n+' to order');q.textContent='+ Add';
+    q.style.cssText='border:1.5px solid '+accent+';background:#fff;color:'+accent+';border-radius:999px;padding:6px 16px;font-family:inherit;font-weight:700;font-size:13px;cursor:pointer;min-height:34px';
+    q.onclick=function(){addToCart(st.cat,idx,0,1);};w.appendChild(q);g.appendChild(w);});
 }
 var lastFocus=null;
 function openItem(){var cur=menu[st.cat],it=cur.items[st.sel];if(!it)return;
@@ -209,10 +213,13 @@ function openItem(){var cur=menu[st.cat],it=cur.items[st.sel];if(!it)return;
     b.style.cssText='display:flex;flex-direction:column;align-items:center;gap:6px;min-width:120px;padding:14px 16px;border-radius:18px;border:2px solid '+(on?accent:'#DCD6C8')+';background:'+(on?'#E3F1E9':'#FFFFFF')+';cursor:pointer;font-family:inherit;color:#14261C';
     b.innerHTML='<svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12l-1.4 17H7.4z"></path><path d="M6.6 9h10.8"></path></svg><span style="font-size:15px;font-weight:700">'+esc(l)+'</span><span style="font-size:14px;color:#4A5A50">₹'+it.p[i]+'</span>';
     b.onclick=function(){st.size=i;openItem();};z.appendChild(b);});
+  st.qty=st.qty||1;$('mQty').textContent=st.qty;$('mAdd').textContent='Add '+st.qty+' to order';
   document.getElementById('mWa').href=WA+encodeURIComponent('Hi The Cane Shop, I’d like to order: '+it.n+(hs?' ('+cur.sizes[zi]+')':''));
   var m=document.getElementById('modal');if(m.hidden){lastFocus=document.activeElement;m.hidden=false;document.body.style.overflow='hidden';m.querySelector('.m-close:last-of-type').focus();}
 }
-function closeItem(){var m=document.getElementById('modal');m.hidden=true;document.body.style.overflow='';st.sel=-1;if(lastFocus)lastFocus.focus();}
+if($('mAdd')){$('mPlus').onclick=function(){st.qty=Math.min(20,(st.qty||1)+1);openItem();};$('mMinus').onclick=function(){st.qty=Math.max(1,(st.qty||1)-1);openItem();};
+ $('mAdd').onclick=function(){var cur=menu[st.cat],it=cur.items[st.sel];var hs=!!cur.sizes&&it.p.length>1&&it.p[0]!==it.p[1];addToCart(st.cat,st.sel,hs?st.size:0,st.qty||1);closeItem();};}
+function closeItem(){var m=document.getElementById('modal');m.hidden=true;document.body.style.overflow='';st.sel=-1;st.qty=1;if(lastFocus)lastFocus.focus();}
 if($('modal')){document.querySelectorAll('#modal .m-close').forEach(function(b){b.onclick=closeItem;});
 document.getElementById('modal').addEventListener('keydown',function(e){if(e.key==='Escape')closeItem();});}
 
@@ -231,6 +238,36 @@ function renderRows(){var el=$('rows');if(!el)return;var h='';
   el.innerHTML=h;
   el.querySelectorAll('.row').forEach(function(r){var t=r.querySelector('.rtrack');r.querySelector('.rprev').onclick=function(){t.scrollBy({left:-t.clientWidth*.8,behavior:'smooth'});};r.querySelector('.rnext').onclick=function(){t.scrollBy({left:t.clientWidth*.8,behavior:'smooth'});};});
   el.querySelectorAll('.rcard').forEach(function(b){b.onclick=function(){st.cat=b.getAttribute('data-k');st.sel=+b.getAttribute('data-i');st.size=0;openItem();};});}
+
+var cart=[];try{cart=JSON.parse(localStorage.getItem('caneCart')||'[]')||[];}catch(e){cart=[];}
+cart=cart.filter(function(c){return menu[c.k]&&menu[c.k].items[c.i];});
+function saveCart(){try{localStorage.setItem('caneCart',JSON.stringify(cart));}catch(e){}}
+function lineInfo(c){var cur=menu[c.k],it=cur.items[c.i];var hs=!!cur.sizes&&it.p.length>1&&it.p[0]!==it.p[1];
+  var pr=it.p[hs?c.z:0];return {name:it.n+(hs?' ('+cur.sizes[c.z]+')':''),price:pr,img:it.img};}
+function addToCart(k,i,z,q){var f=cart.filter(function(c){return c.k===k&&c.i===i&&c.z===z;})[0];
+  if(f)f.q=Math.min(50,f.q+q);else cart.push({k:k,i:i,z:z,q:q});saveCart();renderCart();
+  var t=$('cartToast');if(t){t.textContent='Added: '+lineInfo({k:k,i:i,z:z}).name+(q>1?' × '+q:'');t.style.opacity='1';clearTimeout(t._h);t._h=setTimeout(function(){t.style.opacity='0';},1800);}}
+function cartTotals(){var n=0,tot=0,unk=false;cart.forEach(function(c){var L=lineInfo(c);n+=c.q;if(L.price==null)unk=true;else tot+=L.price*c.q;});return {n:n,tot:tot,unk:unk};}
+function renderCart(){var bar=$('cartBar');if(!bar)return;var T=cartTotals();
+  bar.hidden=T.n===0;document.querySelectorAll('a[aria-label="Order on WhatsApp"]').forEach(function(a){if(a.style.position==='fixed')a.style.display=T.n?'none':'';});
+  $('cartCount').textContent=T.n+(T.n===1?' item':' items');$('cartTotal').textContent='₹'+T.tot+(T.unk?'+':'');
+  var L=$('cartList');L.innerHTML='';
+  cart.forEach(function(c,ix){var I=lineInfo(c);var r=document.createElement('div');
+    r.style.cssText='display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #EEE9DF';
+    r.innerHTML='<span style="width:52px;height:52px;flex:none;border-radius:50%;overflow:hidden;background:#0B3D26;display:flex;align-items:center;justify-content:center">'+(I.img?'<img src="'+I.img+'" alt="" style="width:100%;height:100%;object-fit:cover">':'')+'</span>'+
+     '<span style="flex:1;min-width:0;display:flex;flex-direction:column"><span style="font-weight:700;font-size:15px">'+esc(I.name)+'</span><span style="font-size:14px;color:#4A5A50">'+(I.price==null?'Price at counter':'₹'+I.price+' each')+'</span></span>'+
+     '<span style="display:flex;align-items:center;border:1.5px solid #C9C2B2;border-radius:999px;height:38px"><button type="button" data-a="-" aria-label="Less" style="width:36px;height:100%;border:none;background:none;font-size:18px;cursor:pointer">−</button><span style="min-width:22px;text-align:center;font-weight:800">'+c.q+'</span><button type="button" data-a="+" aria-label="More" style="width:36px;height:100%;border:none;background:none;font-size:18px;cursor:pointer">+</button></span>';
+    r.querySelectorAll('button').forEach(function(bt){bt.onclick=function(){c.q+=bt.getAttribute('data-a')==='+'?1:-1;if(c.q<1)cart.splice(ix,1);saveCart();renderCart();if(!cart.length)closeCart();};});
+    L.appendChild(r);});
+  $('cartSum').textContent='₹'+T.tot+(T.unk?' + items priced at counter':'');
+  var msg='Hi The Cane Shop, I’d like to order:\n'+cart.map(function(c,n){var I=lineInfo(c);return (n+1)+'. '+I.name+' × '+c.q+(I.price!=null?' — ₹'+(I.price*c.q):'');}).join('\n')+'\nTotal: ₹'+T.tot+(T.unk?' (+ items priced at counter)':'')+'\n\nName:\nDine-in / Takeaway:\nPickup time:';
+  $('cartSend').href=WA+encodeURIComponent(msg);}
+function openCart(){var s=$('cartSheet');s.hidden=false;document.body.style.overflow='hidden';$('cartClose').focus();}
+function closeCart(){var s=$('cartSheet');if(s){s.hidden=true;document.body.style.overflow='';}}
+if($('cartBar')){$('cartOpen').onclick=openCart;$('cartClose').onclick=closeCart;$('cartShade').onclick=closeCart;
+  $('cartClear').onclick=function(){cart=[];saveCart();renderCart();closeCart();};
+  $('cartSheet').addEventListener('keydown',function(e){if(e.key==='Escape')closeCart();});
+  $('cartSend').addEventListener('click',function(){try{gtag('event','whatsapp_cart_order',{items:cartTotals().n,value:cartTotals().tot,currency:'INR'});}catch(e){}});}
 var faqData = [
       { q: 'Is there seating and AC?', a: 'Yes — we are a fully air-conditioned dine-in café with indoor and outdoor seating, kept at a comfortable 24°C.' },
       { q: 'Do you have vegetarian options?', a: 'Plenty. Most of our menu is vegetarian, and we also serve chicken momos for non-veg lovers.' },
@@ -256,7 +293,7 @@ if($('reviewsGrid'))document.getElementById('reviewsGrid').innerHTML=data.review
 function status(){var n=new Date();var m=(n.getUTCHours()*60+n.getUTCMinutes()+330)%1440;var open=m>=540&&m<1320;
   document.querySelectorAll('.st-label').forEach(function(e){e.textContent=open?'Open now · until 10 PM':'Closed now · opens 9 AM';});
   document.querySelectorAll('.st-dot').forEach(function(e){e.style.background=open?'#1FA463':'#F2A65A';});}
-renderMenu();renderFaq();renderRows();status();setInterval(status,60000);
+renderMenu();renderFaq();renderRows();renderCart();status();setInterval(status,60000);
 document.querySelectorAll('a[href^="https://"]').forEach(function(a){a.target='_blank';a.rel='noopener';});
 })();
 </script>
