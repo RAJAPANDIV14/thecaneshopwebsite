@@ -361,14 +361,14 @@ footer.foot{border-top:1px solid var(--line);padding:40px 0;font-size:13px;color
     <div><div class="glabel">3. Choose amount</div><div class="gamts" id="gAmts"></div></div>
     <div class="row2"><label class="gfield">To (their name)<input id="gTo" value="" placeholder="e.g. Priya" maxlength="30"></label><label class="gfield">From (your name)<input id="gFrom" placeholder="e.g. Raja" maxlength="30"></label></div>
     <label class="gfield">Their WhatsApp number (optional)<input id="gPhone" inputmode="tel" placeholder="We'll send the e-gift to them directly" maxlength="15"></label>
-    <label class="gfield">Personal message<textarea id="gMsg" rows="2" maxlength="140" placeholder="Happy birthday! Treat yourself to some gelato.">Happy birthday! Treat yourself to some gelato 🍨</textarea></label>
+    <label class="gfield">Personal message<textarea id="gMsg" rows="2" maxlength="140" placeholder="Treat yourself to something sweet at The Cane Shop!"></textarea></label>
     <a id="gSend" class="btn gr" style="text-decoration:none;text-align:center;display:block" target="_blank" rel="noopener" href="#">Buy e-gift card on WhatsApp</a>
     <p style="margin:0;font-size:13px;color:var(--mute);line-height:1.6">We'll reply with UPI payment details. After payment we send the e-gift card with a unique gift code — to you, or straight to them.</p>
    </div>
    <div class="gside">
     <div class="glabel">Live preview</div>
     <div id="gCard" class="gcard">
-     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px"><div><div style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;opacity:.85">The Cane Shop e-Gift</div><div id="gTitle" class="serif" style="font-size:26px;font-weight:700;margin-top:2px">Classic Green</div></div><img src="logo.png" alt="" style="width:52px;height:52px;border-radius:50%;background:#fff;padding:3px"></div>
+     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px"><div><div style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;opacity:.85">The Cane Shop e-Gift</div><div id="gTitle" hidden></div></div><img src="logo.png" alt="" style="width:52px;height:52px;border-radius:50%;background:#fff;padding:3px"></div>
      <div style="display:flex;align-items:center;gap:12px"><span id="gEmoji" style="font-size:38px;line-height:1">💚</span><span id="gGreetP" class="serif" style="font-size:28px;font-weight:700;line-height:1.1">Happy Birthday!</span></div>
      <div style="display:flex;justify-content:space-between;align-items:flex-end"><div style="font-size:13px;line-height:1.5"><div>For: <b id="gToP">Someone special</b></div><div style="opacity:.8">From: <span id="gFromP">—</span></div></div><div id="gAmtP" style="font-size:36px;font-weight:800">₹500</div></div>
     </div>
@@ -558,7 +558,7 @@ function drawGift(){
   $('gAmts').innerHTML=GAM.map(function(a,i){return '<button class="gamt" data-ga="'+i+'" aria-pressed="'+(i===gs.a)+'">₹'+a.toLocaleString('en-IN')+'</button>';}).join('');
   var g=GTH[gs.t],c=$('gCard');c.style.background=g[2];c.style.color=g[3];$('gTitle').textContent=g[0];$('gEmoji').textContent=g[1];
   $('gAmtP').textContent='₹'+GAM[gs.a].toLocaleString('en-IN');$('gToP').textContent=$('gTo').value||'Someone special';$('gFromP').textContent=$('gFrom').value||'—';
-  $('gMsgP').textContent='“'+($('gMsg').value||'Enjoy a treat on me!')+'”';
+  $('gMsgP').textContent='“'+($('gMsg').value||'Treat yourself to something sweet at The Cane Shop!')+'”';
   var m='Hi The Cane Shop, I’d like to buy an e-gift card:\n• Amount: ₹'+GAM[gs.a]+'\n• Design: '+g[0]+'\n• Greeting: '+greet+'\n• To: '+($('gTo').value||'')+'\n• From: '+($('gFrom').value||'')+'\n• Send to WhatsApp: '+($('gPhone').value||'(send to me)')+'\n• Message: '+($('gMsg').value||'')+'\n\nPlease share UPI payment details.';
   $('gSend').href=WA+encodeURIComponent(m);}
 document.addEventListener('click',function(e){var b=e.target.closest('[data-gt],[data-ga],[data-gg]');if(!b)return;if(b.hasAttribute('data-gg')){gs.g=+b.getAttribute('data-gg');$('gCustom').value='';}else if(b.hasAttribute('data-gt')){gs.t=+b.getAttribute('data-gt');var dg={2:0,3:1}[gs.t];if(dg!=null&&!$('gCustom').value)gs.g=dg;}else gs.a=+b.getAttribute('data-ga');drawGift();});
