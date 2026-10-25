@@ -299,7 +299,7 @@ footer.foot{border-top:1px solid var(--line);padding:40px 0;font-size:13px;color
   <div>
    <span class="tag" style="background:var(--dk);color:#fff">Cane Rewards</span>
    <h1 class="serif">Every bill earns you more</h1>
-   <p>Earn <b>1 point for every ₹20</b> you spend. Collect <b>100 points</b> and get <b>₹100 off</b>. Just your mobile number at billing — no app, no card.</p>
+   <p>Earn <b>1 point for every ₹20</b> you spend. Every point = <b>₹1 off</b> — redeem from just <b>50 points (₹50 off)</b>. Just your mobile number at billing — no app, no card.</p>
    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:26px">
     <a class="btn gr" style="text-decoration:none;display:inline-flex;align-items:center" target="_blank" rel="noopener" href="https://wa.me/917806827376?text=Hi%20The%20Cane%20Shop%2C%20I%27d%20like%20to%20join%20Cane%20Rewards">Join free on WhatsApp</a>
     <a class="btn" style="text-decoration:none;display:inline-flex;align-items:center;border:1.5px solid var(--dk);color:var(--dk)" target="_blank" rel="noopener" href="https://wa.me/917806827376?text=Hi%2C%20please%20share%20my%20Cane%20Rewards%20points%20balance">Check my points</a>
@@ -310,9 +310,9 @@ footer.foot{border-top:1px solid var(--line);padding:40px 0;font-size:13px;color
    <div style="margin-top:14px;font-size:15px;color:var(--mute)">If you spend <b id="spendV" style="color:var(--ink)">₹1,000</b></div>
    <input type="range" id="spend" min="100" max="4000" step="100" value="1000" aria-label="Amount spent">
    <div style="display:flex;align-items:baseline;gap:8px"><span id="ptsV" style="font-size:44px;font-weight:800;color:var(--dk)">50</span><span style="font-size:20px;color:var(--gold);font-weight:800">points</span></div>
-   <div style="font-size:14px;color:var(--mute)" id="valV">= ₹50 off · 50 more points to unlock ₹100 off</div>
+   <div style="font-size:14px;color:var(--mute)" id="valV">= ₹50 off — ready to redeem!</div>
    <div class="bar"><i id="barV" style="width:50%"></i></div>
-   <div class="ticks"><span>0</span><span>50</span><span>100 = ₹100 off</span></div>
+   <div class="ticks"><span>0</span><span>50 = ₹50 off</span><span>100 = ₹100 off</span></div>
   </div>
  </div></div>
  <div style="background:var(--cream);padding:64px 0"><div class="wrap">
@@ -320,7 +320,7 @@ footer.foot{border-top:1px solid var(--line);padding:40px 0;font-size:13px;color
   <div class="steps3">
    <div class="step"><b>1</b><h3 style="margin:0 0 6px">Share your number</h3><p style="margin:0;color:var(--mute);line-height:1.6">Tell us your mobile number at billing. That's your free Cane Rewards account.</p></div>
    <div class="step"><b>2</b><h3 style="margin:0 0 6px">Earn points</h3><p style="margin:0;color:var(--mute);line-height:1.6">1 point for every ₹20 on bills of ₹100 or more — juices, K-Bites, momos, gelato, desserts.</p></div>
-   <div class="step"><b>3</b><h3 style="margin:0 0 6px">Enjoy ₹100 off</h3><p style="margin:0;color:var(--mute);line-height:1.6">Every 100 points = ₹100 off. Ask at the counter. Points stay valid for 3 months.</p></div>
+   <div class="step"><b>3</b><h3 style="margin:0 0 6px">Redeem from 50 points</h3><p style="margin:0;color:var(--mute);line-height:1.6">1 point = ₹1 off. Redeem from 50 points (₹50 off) — ask at the counter. Points stay valid for 3 months.</p></div>
   </div>
  </div></div>
 </section>
@@ -489,7 +489,7 @@ function openBag(){$('drawer').classList.add('open');$('drawer').setAttribute('a
 function closeBag(){$('drawer').classList.remove('open');$('drawer').setAttribute('aria-hidden','true');$('shade').hidden=true;document.body.style.overflow='';}
 // ---------- rewards calc ----------
 function calc(){var s=+$('spend').value;var pts=s>=100?Math.floor(s/20):0;$('spendV').textContent='₹'+s.toLocaleString('en-IN');$('ptsV').textContent=pts;
-  var r=pts>=100?Math.floor(pts/100)*100:0;$('valV').textContent=pts>=100?'= ₹'+r+' off unlocked'+(pts%100?' · '+(100-pts%100)+' more points to the next ₹100':''):(100-pts)+' more points to unlock ₹100 off';
+  $('valV').textContent=pts>=50?'= ₹'+pts+' off — ready to redeem!':(50-pts)+' more points to unlock ₹50 off';
   $('barV').style.width=Math.min(100,pts)+'%';}
 // ---------- views ----------
 function setView(v,sub){st.view=v;if(sub)st.sub=sub;else st.sub=v==='menu'?(st.sub==='favorites'?'favorites':'all'):(v==='featured'?'featured':st.sub);
