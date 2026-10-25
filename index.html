@@ -159,6 +159,21 @@ footer.foot{border-top:1px solid var(--line);padding:40px 0;font-size:13px;color
 .fcols h5{margin:0 0 12px;font-size:14px;color:var(--ink)}
 .fcols a,.fcols button{display:block;background:none;border:none;padding:4px 0;color:var(--mute);text-decoration:none;font-size:13px;cursor:pointer;text-align:left}
 .fcols a:hover,.fcols button:hover{color:var(--ink)}
+.ggrid>*{min-width:0}
+.gfield input,.gfield textarea{min-width:0;width:100%}
+.ggrid{display:grid;grid-template-columns:7fr 5fr;gap:36px;align-items:start}
+.gform{border:1px solid var(--line);border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:20px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.glabel{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#7A857F;margin-bottom:10px}
+.gthemes{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.gth{border:2px solid var(--line);border-radius:16px;padding:12px;text-align:left;cursor:pointer;background:#fff}
+.gth[aria-pressed="true"]{border-color:var(--gr)}
+.gamts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.gamt{border:1.5px solid #CFCBC0;border-radius:14px;padding:12px 0;font-weight:800;font-size:16px;background:#fff;cursor:pointer}
+.gamt[aria-pressed="true"]{border:2px solid var(--gr);background:#E3F1E9;color:var(--dk)}
+.gfield{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:#33443A}
+.gfield input,.gfield textarea{border:1px solid #CFCBC0;border-radius:12px;padding:11px 14px;font-size:14px;font-weight:400;font-family:inherit;resize:vertical}
+.gside{position:sticky;top:150px;background:var(--cream);border:1px solid #E2DED2;border-radius:24px;padding:24px}
+.gcard{border-radius:20px;padding:22px;color:#fff;min-height:220px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 18px 40px rgba(0,0,0,.2);transition:background .3s}
 /* modal */
 .modal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(8,24,16,.6);overflow:auto}
 .mbox{background:#fff;border-radius:28px;max-width:680px;width:100%;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.35);margin:auto}
@@ -201,7 +216,11 @@ footer.foot{border-top:1px solid var(--line);padding:40px 0;font-size:13px;color
  .mobnav button[aria-current="page"]{color:var(--gr);border-color:var(--gr)}
  .hbar{height:70px}.brand img{width:48px;height:48px}
  .subnav{top:113px}
- .pair,.banner,.list,.mgrid,.rgrid,.vgrid,.steps3{grid-template-columns:1fr}
+ .pair,.banner,.list,.mgrid,.rgrid,.vgrid,.steps3,.ggrid{grid-template-columns:1fr}
+ .gthemes,.gamts{grid-template-columns:repeat(2,1fr)}
+ .gside{position:static}
+ .gform{padding:18px}
+ .row2{grid-template-columns:1fr}
  .side{position:static;padding:14px}
  #catlist{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
  #catlist .catbtn{flex:none;width:auto;border:1px solid var(--line);border-radius:999px;padding:8px 14px;gap:8px}
@@ -230,6 +249,7 @@ footer.foot{border-top:1px solid var(--line);padding:40px 0;font-size:13px;color
     <button data-view="menu">Menu</button>
     <button data-view="featured" aria-current="page">Featured</button>
     <button data-view="rewards">Rewards</button>
+    <button data-view="gift">Gift Cards</button>
     <button data-view="visit">Visit</button>
    </nav>
   </div>
@@ -239,7 +259,7 @@ footer.foot{border-top:1px solid var(--line);padding:40px 0;font-size:13px;color
   </div>
  </div>
  <nav class="mobnav" aria-label="Main mobile">
-  <button data-view="menu">Menu</button><button data-view="featured" aria-current="page">Featured</button><button data-view="rewards">Rewards</button><button data-view="visit">Visit</button>
+  <button data-view="menu">Menu</button><button data-view="featured" aria-current="page">Featured</button><button data-view="rewards">Rewards</button><button data-view="gift">Gift</button><button data-view="visit">Visit</button>
  </nav>
 </header>
 
@@ -325,6 +345,39 @@ footer.foot{border-top:1px solid var(--line);padding:40px 0;font-size:13px;color
  </div></div>
 </section>
 
+<!-- GIFT -->
+<section id="v-gift" hidden>
+ <div class="wrap" style="padding-top:44px;padding-bottom:64px">
+  <span class="tag">Cane Shop Gift Cards</span>
+  <h1 class="serif" style="margin:12px 0 0;font-size:clamp(32px,5vw,50px);color:var(--dk)">Gift a treat they'll love</h1>
+  <p style="margin:10px 0 32px;color:var(--mute);max-width:640px;line-height:1.6">Momos, gelato, juices and desserts — let them pick. Send an e-gift card on WhatsApp, or buy a printed card at our counter.</p>
+  <div class="ggrid">
+   <div class="gform">
+    <div><div class="glabel">1. Choose a design</div><div class="gthemes" id="gThemes"></div></div>
+    <div><div class="glabel">2. Choose amount</div><div class="gamts" id="gAmts"></div></div>
+    <div class="row2"><label class="gfield">To (their name)<input id="gTo" value="" placeholder="e.g. Priya" maxlength="30"></label><label class="gfield">From (your name)<input id="gFrom" placeholder="e.g. Raja" maxlength="30"></label></div>
+    <label class="gfield">Their WhatsApp number (optional)<input id="gPhone" inputmode="tel" placeholder="We'll send the e-gift to them directly" maxlength="15"></label>
+    <label class="gfield">Personal message<textarea id="gMsg" rows="2" maxlength="140" placeholder="Happy birthday! Treat yourself to some gelato.">Happy birthday! Treat yourself to some gelato 🍨</textarea></label>
+    <a id="gSend" class="btn gr" style="text-decoration:none;text-align:center;display:block" target="_blank" rel="noopener" href="#">Buy e-gift card on WhatsApp</a>
+    <p style="margin:0;font-size:13px;color:var(--mute);line-height:1.6">We'll reply with UPI payment details. After payment we send the e-gift card with a unique gift code — to you, or straight to them.</p>
+   </div>
+   <div class="gside">
+    <div class="glabel">Live preview</div>
+    <div id="gCard" class="gcard">
+     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px"><div><div style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;opacity:.85">The Cane Shop e-Gift</div><div id="gTitle" class="serif" style="font-size:26px;font-weight:700;margin-top:2px">Classic Green</div></div><img src="logo.png" alt="" style="width:52px;height:52px;border-radius:50%;background:#fff;padding:3px"></div>
+     <div id="gEmoji" style="font-size:40px;line-height:1">💚</div>
+     <div style="display:flex;justify-content:space-between;align-items:flex-end"><div style="font-size:13px;line-height:1.5"><div>For: <b id="gToP">Someone special</b></div><div style="opacity:.8">From: <span id="gFromP">—</span></div></div><div id="gAmtP" style="font-size:36px;font-weight:800">₹500</div></div>
+    </div>
+    <div id="gMsgP" style="margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;font-style:italic;color:#33443A;font-size:14px"></div>
+    <div style="margin-top:16px;background:var(--cream);border-radius:16px;padding:16px;font-size:13px;color:#33443A;line-height:1.7">
+     <b style="display:block;color:var(--dk);margin-bottom:4px">Good to know</b>
+     • Valid for <b>3 months</b> from purchase<br>• Redeem at The Cane Shop, Bodi Thevaram Road — show the gift code at billing<br>• Prefer a printed card? Buy one at our counter (same amounts)<br>• Not exchangeable for cash
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
 <!-- VISIT -->
 <section id="v-visit" hidden>
  <div class="visit"><div class="wrap vgrid">
@@ -348,7 +401,7 @@ footer.foot{border-top:1px solid var(--line);padding:40px 0;font-size:13px;color
  <div class="fcols">
   <div><h5>The Cane Shop</h5><button data-view="featured">Featured menu</button><button data-sub="all">Full menu</button><a href="/story">Our story &amp; reviews</a></div>
   <div><h5>Order</h5><button id="footBag">Order bag</button><a href="https://wa.me/917806827376" target="_blank" rel="noopener">WhatsApp</a><a href="tel:+917806827376">Call +91 78068 27376</a></div>
-  <div><h5>Rewards</h5><button data-view="rewards">Cane Rewards</button><a href="https://wa.me/917806827376?text=Hi%2C%20please%20share%20my%20Cane%20Rewards%20points%20balance" target="_blank" rel="noopener">Check my points</a></div>
+  <div><h5>Rewards &amp; Gifts</h5><button data-view="rewards">Cane Rewards</button><button data-view="gift">Gift cards</button><a href="https://wa.me/917806827376?text=Hi%2C%20please%20share%20my%20Cane%20Rewards%20points%20balance" target="_blank" rel="noopener">Check my points</a></div>
   <div><h5>Follow</h5><a href="https://www.instagram.com/the_cane_shop/" target="_blank" rel="noopener">Instagram</a><a href="https://www.google.com/maps/search/?api=1&query=The+Cane+Shop+Bodinayakanur" target="_blank" rel="noopener">Google reviews (4.9★)</a></div>
  </div>
  <p style="margin:20px 0 0">© 2026 The Cane Shop · Akathiya Foods Private Limited · Bodinayakanur</p>
@@ -491,9 +544,24 @@ function closeBag(){$('drawer').classList.remove('open');$('drawer').setAttribut
 function calc(){var s=+$('spend').value;var pts=s>=100?Math.floor(s/20):0;$('spendV').textContent='₹'+s.toLocaleString('en-IN');$('ptsV').textContent=pts;
   $('valV').textContent=pts>=50?'= ₹'+pts+' off — ready to redeem!':(50-pts)+' more points to unlock ₹50 off';
   $('barV').style.width=Math.min(100,pts)+'%';}
+// ---------- gift cards ----------
+var GTH=[['Classic Green','💚','linear-gradient(135deg,#0B3D26,#007042)','#fff'],['Sarang Gelato','🍨','linear-gradient(135deg,#3A0F44,#8E3B9E)','#fff'],['Happy Birthday','🎂','linear-gradient(135deg,#C8873A,#E8B04B)','#1E1208'],['Thank You','🙏','linear-gradient(135deg,#D4E9E2,#A8D5C2)','#0B3D26']];
+var GAM=[200,500,1000,2000];var gs={t:0,a:1};
+function drawGift(){
+  $('gThemes').innerHTML=GTH.map(function(g,i){return '<button class="gth" data-gt="'+i+'" aria-pressed="'+(i===gs.t)+'"><div style="height:34px;border-radius:8px;background:'+g[2]+';margin-bottom:8px;display:flex;align-items:center;justify-content:center;font-size:18px">'+g[1]+'</div><b style="font-size:12.5px">'+g[0]+'</b></button>';}).join('');
+  $('gAmts').innerHTML=GAM.map(function(a,i){return '<button class="gamt" data-ga="'+i+'" aria-pressed="'+(i===gs.a)+'">₹'+a.toLocaleString('en-IN')+'</button>';}).join('');
+  var g=GTH[gs.t],c=$('gCard');c.style.background=g[2];c.style.color=g[3];$('gTitle').textContent=g[0];$('gEmoji').textContent=g[1];
+  $('gAmtP').textContent='₹'+GAM[gs.a].toLocaleString('en-IN');$('gToP').textContent=$('gTo').value||'Someone special';$('gFromP').textContent=$('gFrom').value||'—';
+  $('gMsgP').textContent='“'+($('gMsg').value||'Enjoy a treat on me!')+'”';
+  var m='Hi The Cane Shop, I’d like to buy an e-gift card:\n• Amount: ₹'+GAM[gs.a]+'\n• Design: '+g[0]+'\n• To: '+($('gTo').value||'')+'\n• From: '+($('gFrom').value||'')+'\n• Send to WhatsApp: '+($('gPhone').value||'(send to me)')+'\n• Message: '+($('gMsg').value||'')+'\n\nPlease share UPI payment details.';
+  $('gSend').href=WA+encodeURIComponent(m);}
+document.addEventListener('click',function(e){var b=e.target.closest('[data-gt],[data-ga]');if(!b)return;if(b.hasAttribute('data-gt'))gs.t=+b.getAttribute('data-gt');else gs.a=+b.getAttribute('data-ga');drawGift();});
+['gTo','gFrom','gPhone','gMsg'].forEach(function(i){$(i).addEventListener('input',drawGift);});
+$('gSend').addEventListener('click',function(){try{gtag('event','gift_card_request',{value:GAM[gs.a],currency:'INR'});}catch(x){}});
+drawGift();
 // ---------- views ----------
 function setView(v,sub){st.view=v;if(sub)st.sub=sub;else st.sub=v==='menu'?(st.sub==='favorites'?'favorites':'all'):(v==='featured'?'featured':st.sub);
-  ['featured','menu','rewards','visit'].forEach(function(x){$('v-'+x).hidden=x!==v;});
+  ['featured','menu','rewards','gift','visit'].forEach(function(x){$('v-'+x).hidden=x!==v;});
   document.querySelectorAll('[data-view]').forEach(function(b){if(b.tagName==='BUTTON'&&b.closest('nav'))b.setAttribute('aria-current',b.getAttribute('data-view')===v?'page':'false');});
   document.querySelectorAll('.subtabs [data-sub]').forEach(function(b){b.setAttribute('aria-current',(v==='featured'&&b.getAttribute('data-sub')==='featured')||(v==='menu'&&b.getAttribute('data-sub')===st.sub)?'true':'false');});
   if(v==='menu'){renderCats();renderCatalog();}
@@ -529,7 +597,7 @@ $('q').addEventListener('input',function(){st.q=this.value;renderCatalog();});
 $('spend').oninput=calc;
 function status(){var n=new Date();var m=(n.getUTCHours()*60+n.getUTCMinutes()+330)%1440;var open=m>=540&&m<1320;document.querySelectorAll('.st-label').forEach(function(e){e.textContent=open?'Open now · until 10 PM':'Closed · opens 9 AM';});}
 status();setInterval(status,60000);calc();renderAll();renderBag();
-var h=(location.hash||'').slice(1);if(h==='menu')setView('menu','all');else if(h==='favourites')setView('menu','favorites');else if(menu[h]){st.cat=h;setView('menu','all');}else if(h==='rewards'||h==='visit')setView(h);
+var h=(location.hash||'').slice(1);if(h==='menu')setView('menu','all');else if(h==='favourites')setView('menu','favorites');else if(menu[h]){st.cat=h;setView('menu','all');}else if(h==='rewards'||h==='visit'||h==='gift')setView(h);
 })();
 </script>
 </body>
